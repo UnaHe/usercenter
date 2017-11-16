@@ -10,13 +10,13 @@
 |
 */
 
-Route::middleware(\App\Http\Middleware\ApiLog::class)->namespace('App\Http\Controllers')->group(function (){
+Route::namespace('App\Http\Controllers')->group(function (){
 
     /**
      * 授权登录
      */
     Route::post('/oauth/token', [
-        'uses' => 'Auth\AccessTokenController@issueToken',
+        'uses' => 'AccessTokenController@issueToken',
         'middleware' => 'throttle',
     ]);
 
@@ -40,12 +40,15 @@ Route::middleware(\App\Http\Middleware\ApiLog::class)->namespace('App\Http\Contr
      */
     Route::post('/modifyPassword', "UserController@modifyPassword");
 
+    /**
+     * 检测是否登录
+     */
+    Route::post("/checkAuth", 'UserController@checkAuth');
 
     /**
      * 需要登录访问的接口列表
      */
     Route::middleware('auth:api')->group(function(){
-
     });
 
 });

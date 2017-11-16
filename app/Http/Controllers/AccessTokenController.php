@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Traits\AjaxResponse;
 use Psr\Http\Message\ServerRequestInterface;

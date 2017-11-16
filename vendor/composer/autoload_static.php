@@ -410,7 +410,7 @@ class ComposerStaticInit696ebad3e741cd47c7e8a1506ce76fe2
         'App\\Helpers\\SmsHelper' => __DIR__ . '/../..' . '/app/Helpers/SmsHelper.php',
         'App\\Helpers\\TaobaoHelper' => __DIR__ . '/../..' . '/app/Helpers/TaobaoHelper.php',
         'App\\Helpers\\UrlHelper' => __DIR__ . '/../..' . '/app/Helpers/UrlHelper.php',
-        'App\\Http\\Controllers\\Auth\\AccessTokenController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AccessTokenController.php',
+        'App\\Http\\Controllers\\Auth\\AccessTokenController' => __DIR__ . '/../..',
         'App\\Http\\Controllers\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/BannerController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',

@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use App\Services\CaptchaService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    /**
+     * 检测是否登录
+     */
+    public function checkAuth(){
+        $user= Auth::guard("api")->user();
+        if($user){
+            return $this->ajaxSuccess($user);
+        }else{
+            return $this->ajaxError();
+        }
+    }
+
     /**
      * 用户注册
      */
@@ -28,7 +42,7 @@ class UserController extends Controller
             return $this->ajaxError('密码长度至少为6位');
         }
 
-        if(!(new CaptchaService())->checkSmsCode($codeId, $captcha)){
+        if(!(new CaptchaService())->checkSmsCode($userName, $codeId, $captcha)){
             return $this->ajaxError("验证码错误");
         }
 
@@ -100,7 +114,7 @@ class UserController extends Controller
             return $this->ajaxError('密码长度至少为6位');
         }
 
-        if(!(new CaptchaService())->checkSmsCode($codeId, $captcha)){
+        if(!(new CaptchaService())->checkSmsCode($userName, $codeId, $captcha)){
             return $this->ajaxError("验证码错误");
         }
 

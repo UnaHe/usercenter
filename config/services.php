@@ -34,10 +34,4 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
-    //新浪微博开放平台
-    'sina_open' => [
-        'key' => env('SINA_OPEN_KEY', '2307231472'),
-    ],
-
 ];
