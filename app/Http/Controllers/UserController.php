@@ -26,13 +26,12 @@ class UserController extends Controller
      * 用户注册
      */
     public function register(Request $request){
-        $inviteCode = $request->post('invite_code');
         $userName = $request->post('username');
         $password = $request->post('password');
         $codeId = $request->post('codeId');
         $captcha = $request->post('captcha');
 
-        if(!$inviteCode || !$userName || !$password || !$codeId){
+        if(!$userName || !$password || !$codeId){
             return $this->ajaxError("参数错误");
         }
         if(!preg_match('/^1\d{10}$/', $userName)){
@@ -47,7 +46,7 @@ class UserController extends Controller
         }
 
         try{
-            (new UserService())->registerUser($userName, $password, $inviteCode);
+            (new UserService())->registerUser($userName, $password);
         }catch (\Exception $e){
             return $this->ajaxError($e->getMessage());
         }
@@ -126,6 +125,5 @@ class UserController extends Controller
 
         return $this->ajaxSuccess();
     }
-
 
 }

@@ -18,22 +18,15 @@ class UserService
      * 注册用户
      * @param $userName
      * @param $password
-     * @param $inviteCode
      * @throws \Exception
      */
-    public function registerUser($userName, $password, $inviteCode){
+    public function registerUser($userName, $password){
         DB::beginTransaction();
         try{
-            //使用邀请码
-            if(!(new InviteCode())->useCode($inviteCode)){
-                throw new \LogicException("邀请码无效");
-            }
-
             //创建用户
             $isSuccess = User::create([
                 'phone' => $userName,
                 'password' => bcrypt($password),
-                'invite_code' => $inviteCode,
                 'reg_time' => date('Y-m-d H:i:s'),
                 'reg_ip' => Request::ip(),
             ]);
