@@ -16,7 +16,7 @@ class UserController extends Controller
     public function checkAuth(){
         $user= Auth::guard("api")->user();
         if($user){
-            return $this->ajaxSuccess(['id'=>$user->id]);
+            return $this->ajaxSuccess($user);
         }else{
             return $this->ajaxError();
         }
